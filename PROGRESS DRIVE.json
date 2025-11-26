@@ -1,0 +1,87 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ask-ai",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "744cffb5-c954-4b3c-a0a8-7cb90987e259",
+      "name": "Webhook",
+      "webhookId": "bd2bd497-53ff-458b-92ad-12d4c40c603f"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "abf439a2-1cce-4d91-b18d-1d0175c065b0",
+      "name": "When chat message received",
+      "webhookId": "8aec4adf-1097-4f82-8e23-e2acc96206d5"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "1PqgUa-jxLW-dHRP9a5zash3wd8BPMLY02S3MbjHUyko",
+          "mode": "list",
+          "cachedResultName": " SJK AI Center",
+          "cachedResultUrl": "https://docs.google.com/document/d/1PqgUa-jxLW-dHRP9a5zash3wd8BPMLY02S3MbjHUyko/edit?usp=drivesdk"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "244e1dc6-ad1f-427d-a7c6-baa621a25588",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "9ofEuAvqI7yjro6v",
+          "name": "Google Drive account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "96a42a69-7a1b-4bad-8b46-5f650455bd1b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "13aa8683eecf98fb0d68df226851636ffaa6ee2d343d76eebb1fb62b379f207e"
+  },
+  "id": "QTnNa5l2wfw1tzbu",
+  "tags": []
+}
