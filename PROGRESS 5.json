@@ -1,0 +1,91 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "3498bd54-5018-4599-a105-afaa8a314525",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e0f38778-d99f-4ab5-b62f-518e7b0ce04b",
+      "name": "Webhook",
+      "webhookId": "3498bd54-5018-4599-a105-afaa8a314525"
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "chatId": "https://api.telegram.org/bot<8376924154:AAE2DODiTbcNBRseO9F8gQEIGT-SViZI_lo>/getUpdates"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "413c4391-7fb9-4816-8b62-0256f4d1e2aa",
+      "name": "Get a chat",
+      "webhookId": "a9fc6c1b-85b3-4628-9bf0-a7f5a1ff7679",
+      "credentials": {
+        "telegramApi": {
+          "id": "iRqGw0LxgcKcN6bE",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "AI",
+        "pineconeIndex": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "68f7a09c-c121-4491-aec0-1d6f036f1f07",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "8UfnOL5COvW3l47U",
+          "name": "PineconeApi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get a chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6d1a3ae8-7230-4292-82fb-42f9e7e84b50",
+  "meta": {
+    "instanceId": "13aa8683eecf98fb0d68df226851636ffaa6ee2d343d76eebb1fb62b379f207e"
+  },
+  "id": "QxsZWerClHjknT6C",
+  "tags": []
+}
